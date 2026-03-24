@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - Maple Friend</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .product-detail-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .product-images-section {
+            position: relative;
+        }
+
+        .main-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .image-counter {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .thumbnail {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f8f8f8;
+            border: 3px solid transparent;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail:hover {
+            border-color: var(--secondary-color);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .thumbnail.active {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(139, 69, 19, 0.3);
+        }
+
+        .product-info-section {
+            padding: 2rem;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .current-price {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .original-price {
+            font-size: 1.2rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .discount-badge {
+            background: #ff4444;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .product-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .product-features {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 1rem;
+            color: var(--primary-color);
+        }
+
+        .product-variants {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .variant-option {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .variant-option:hover {
+            border-color: var(--secondary-color);
+            background: rgba(210, 105, 30, 0.1);
+        }
+
+        .variant-option.selected {
+            border-color: var(--primary-color);
+            background: rgba(139, 69, 19, 0.1);
+        }
+
+        .variant-info {
+            flex: 1;
+        }
+
+        .variant-name {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .variant-price {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .purchase-section {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 2px solid var(--border-color);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 0;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .quantity-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .quantity-input {
+            width: 60px;
+            padding: 0.5rem;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .quantity-label {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .btn-add-cart {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+            height: fit-content;
+        }
+
+        .btn-add-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        @media (max-width: 968px) {
+            .product-detail-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .main-image {
+                height: 400px;
+            }
+
+            .thumbnail-grid {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+                gap: 0.5rem;
+            }
+
+            .purchase-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .thumbnail-grid {
+                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            }
+
+            .product-title {
+                font-size: 2rem;
+            }
+
+            .purchase-section {
+                padding: 1.5rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">🕯️ Maple Friend</a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="cart.html" id="cart-link">Cart (<span id="cart-count">0</span>)</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail">
+        <div class="container">
+            <div id="product-detail">
+                <!-- Product details will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Related Products</h2>
+            <div class="product-grid" id="related-products">
+                <!-- Related products will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Maple Friend</h3>
+                    <p>Specializing in premium scented candles, bringing relaxation and cozy atmosphere to your home.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><strong>Email:</strong> info@maplefriend.vn</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Subscribe</h3>
+                    <p>Subscribe to get updates on new products and promotions.</p>
+                    <div style="margin-top: 1rem;">
+                        <div style="display: flex; gap: 0.5rem;">
+                            <input type="email" placeholder="Enter your email" style="flex: 1; padding: 0.8rem; border: 2px solid var(--border-color); border-radius: 5px; font-family: inherit;">
+                            <button type="button" class="btn" onclick="subscribeNewsletter()">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Maple Friend. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Enhanced product detail display
+        function displayProductDetail() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id'));
+            const product = products.find(p => p.id === productId);
+
+            if (!product) {
+                window.location.href = 'products.html';
+                return;
+            }
+
+            const container = document.getElementById('product-detail');
+            container.innerHTML = `
+                <div class="product-detail-container">
+                    <div class="product-images-section">
+                        <div class="main-image-container">
+                            <img src="${product.images[0]}" alt="${product.name}" class="main-image" id="main-image">
+                            <div class="image-counter">1 / ${product.images.length}</div>
+                        </div>
+                        <div class="thumbnail-grid">
+                            ${product.images.map((img, index) => {
+                console.log('Loading image:', img);
+                return `
+                                <div class="thumbnail ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${img}', ${index})">
+                                    <img src="${img}" alt="${product.name} - Image ${index + 1}" onerror="this.style.display='none'; console.error('Failed to load:', this.src);">
+                                </div>`;
+            }).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="product-info-section">
+                        <h1 class="product-title">${product.name}</h1>
+                        <div class="price-container">
+                            <span class="current-price">${formatPrice(product.price)}</span>
+                            <span class="original-price">${formatPrice(product.originalPrice)}</span>
+                            <span class="discount-badge">${Math.round((1 - product.price / product.originalPrice) * 100)}% OFF</span>
+                        </div>
+                        
+                        <div class="product-variants">
+                            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Available Variants</h3>
+                            <div class="variant-option selected" data-variant="classic" data-price="${product.price}">
+                                <div class="variant-info">
+                                    <div class="variant-name">Classic Size</div>
+                                    <div class="variant-price">${formatPrice(product.price)}</div>
+                                </div>
+                            </div>
+                            <div class="variant-option" data-variant="large" data-price="${product.price * 1.5}">
+                                <div class="variant-info">
+                                    <div class="variant-name">Large Size</div>
+                                    <div class="variant-price">${formatPrice(product.price * 1.5)}</div>
+                                </div>
+                            </div>
+                            <div class="variant-option" data-variant="gift" data-price="${product.price * 3}">
+                                <div class="variant-info">
+                                    <div class="variant-name">Gift Set</div>
+                                    <div class="variant-price">${formatPrice(product.price * 3)}</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="purchase-section">
+                            <div class="quantity-selector">
+                                <span class="quantity-label">Quantity:</span>
+                                <div class="quantity-control">
+                                    <button class="quantity-btn" onclick="decreaseQuantity()">−</button>
+                                    <input type="number" id="quantity" class="quantity-input" value="1" min="1" max="10" readonly>
+                                    <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                                </div>
+                            </div>
+                            <button class="btn-add-cart" onclick="addToCartDetail(${product.id})">
+                                Add to Cart
+                            </button>
+                        </div>
+                        
+                        <div class="product-features">
+                            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Product Features</h3>
+                            <div class="feature-item">
+                                <span class="feature-icon">🕯️</span>
+                                <span>Premium Quality Wax</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🌿</span>
+                                <span>Natural Essential Oils</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">⏰</span>
+                                <span>60+ Hours Burn Time</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🌍</span>
+                                <span>Eco-Friendly Packaging</span>
+                            </div>
+                        </div>
+                        
+                        <div class="product-description">
+                            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Product Description</h3>
+                            <p>${product.description}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Enhanced image change function
+        function changeMainImage(imageSrc, imageIndex) {
+            const mainImage = document.getElementById('main-image');
+            const imageCounter = document.querySelector('.image-counter');
+
+            mainImage.style.opacity = '0';
+
+            setTimeout(() => {
+                mainImage.src = imageSrc;
+                mainImage.style.opacity = '1';
+                imageCounter.textContent = `${imageIndex + 1} / ${product.images.length}`;
+
+                // Update active thumbnail
+                document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+                    thumb.classList.remove('active');
+                    if (index === imageIndex) {
+                        thumb.classList.add('active');
+                    }
+                });
+            }, 200);
+        }
+
+        // Quantity control functions
+        function increaseQuantity() {
+            const input = document.getElementById('quantity');
+            const currentValue = parseInt(input.value);
+            if (currentValue < 10) {
+                input.value = currentValue + 1;
+            }
+        }
+
+        function decreaseQuantity() {
+            const input = document.getElementById('quantity');
+            const currentValue = parseInt(input.value);
+            if (currentValue > 1) {
+                input.value = currentValue - 1;
+            }
+        }
+
+        // Variant selection functionality
+        function selectVariant(element) {
+            // Remove selected class from all variants
+            document.querySelectorAll('.variant-option').forEach(variant => {
+                variant.classList.remove('selected');
+            });
+
+            // Add selected class to clicked variant
+            element.classList.add('selected');
+
+            // Update price display
+            const price = parseFloat(element.dataset.price);
+            const currentPriceElement = document.querySelector('.current-price');
+            const originalPriceElement = document.querySelector('.original-price');
+            const discountBadge = document.querySelector('.discount-badge');
+
+            if (currentPriceElement) {
+                currentPriceElement.textContent = formatPrice(price);
+            }
+
+            // Calculate original price for this variant
+            const originalPrice = price * 1.5; // Assuming 33% discount
+            if (originalPriceElement) {
+                originalPriceElement.textContent = formatPrice(originalPrice);
+            }
+
+            if (discountBadge) {
+                discountBadge.textContent = '33% OFF';
+            }
+        }
+
+        // Initialize variant selection
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add click handlers to variant options
+            document.querySelectorAll('.variant-option').forEach(variant => {
+                variant.addEventListener('click', function () {
+                    selectVariant(this);
+                });
+            });
+        });
+
+        // Display related products
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id'));
+
+            // Get related products (excluding current product)
+            const relatedProducts = products.filter(p => p.id !== productId).slice(0, 3);
+            const relatedContainer = document.getElementById('related-products');
+
+            relatedContainer.innerHTML = relatedProducts.map(product => `
+                <div class="product-card" onclick="viewProduct(${product.id})">
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="price-container">
+                            <span class="current-price">${formatPrice(product.price)}</span>
+                            <span class="original-price">${formatPrice(product.originalPrice)}</span>
+                        </div>
+                        <p class="product-description">${product.description}</p>
+                        <button class="btn" onclick="addToCart(event, ${product.id})">Add to Cart</button>
+                    </div>
+                </div>
+            `).join('');
+        });
+    </script>
+</body>
+
+</html>

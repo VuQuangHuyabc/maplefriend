@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maple Friend - Premium Scented Candles</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">🕯️ Maple Friend</a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="cart.html" id="cart-link">Cart (<span id="cart-count">0</span>)</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('Banner/STT-ban-nen-thom-8.png');">
+        <div class="hero-content">
+            <h1>Maple Friend</h1>
+            <p>Premium scented candles - Bringing relaxation and cozy atmosphere to your living space</p>
+            <a href="#featured" class="btn">Discover Now</a>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products" id="featured">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="product-grid" id="featured-products">
+                <!-- Products will be loaded by JavaScript -->
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="products.html" class="btn">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div>
+                    <img src="Sản phẩm/SP2/Sceac61f636964d82b9f6da8a87afdc843.avif" alt="Premium scented candles" class="about-image">
+                </div>
+                <div class="about-text">
+                    <h2>Why Choose Maple Friend?</h2>
+                    <p><strong>Premium Quality:</strong> Products made from natural wax, safe for your health.</p>
+                    <p><strong>Delicate Fragrance:</strong> Scents carefully selected from essential oils.</p>
+                    <p><strong>Elegant Design:</strong> Beautiful packaging, perfect as gifts for loved ones.</p>
+                    <p><strong>Long Burning Time:</strong> Up to 60 hours of burn time, providing great value.</p>
+                    <a href="about.html" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Maple Friend</h3>
+                    <p>Specializing in premium scented candles, bringing relaxation and cozy atmosphere to your home.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><strong>Email:</strong> info@maplefriend.vn</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Subscribe</h3>
+                    <p>Subscribe to get updates on new products and promotions.</p>
+                    <div style="margin-top: 1rem;">
+                        <div style="display: flex; gap: 0.5rem;">
+                            <input type="email" placeholder="Enter your email" style="flex: 1; padding: 0.8rem; border: 2px solid var(--border-color); border-radius: 5px; font-family: inherit;">
+                            <button type="button" class="btn" onclick="subscribeNewsletter()">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Maple Friend. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

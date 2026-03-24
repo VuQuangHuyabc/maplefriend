@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Maple Friend</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">🕯️ Maple Friend</a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="cart.html" id="cart-link">Cart (<span id="cart-count">0</span>)</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('Banner/nen-thom-la-gi-top-5-loai-nen-thom-tot-khu-mui-hieu-qua-202202191627590022.jpg');">
+        <div class="hero-content">
+            <h1>Contact Maple Friend</h1>
+            <p>Connect with us to experience the wonderful world of scented candles</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h2 style="color: var(--primary-color); margin-bottom: 2rem;">Send Us a Message</h2>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" style="width: 100%; padding: 0.8rem; border: 2px solid var(--border-color); border-radius: 5px; font-family: inherit;">
+                                <option value="">Please select a subject</option>
+                                <option value="consultation">Product Consultation</option>
+                                <option value="order">Order Issues</option>
+                                <option value="cooperation">Business Cooperation</option>
+                                <option value="feedback">Feedback & Suggestions</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message Content *</label>
+                            <textarea id="message" name="message" required placeholder="Enter your message you want to share with us..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%; padding: 1rem;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="background: white; padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem; box-shadow: var(--shadow);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">❓ What are Maple Friend scented candles made from?</h3>
+                    <p style="color: var(--text-light);">Our products are made from pure soy wax, natural essential oils, and premium cotton wicks, safe for your health.</p>
+                </div>
+                
+                <div style="background: white; padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem; box-shadow: var(--shadow);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">❓ How long does delivery take?</h3>
+                    <p style="color: var(--text-light);">HCMC: 2-4 hours. Other provinces: 1-3 business days. We also offer express delivery if needed.</p>
+                </div>
+                
+                <div style="background: white; padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem; box-shadow: var(--shadow);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">❓ Is there a return policy?</h3>
+                    <p style="color: var(--text-light);">We accept returns within 7 days if products have manufacturing defects or don't match the description.</p>
+                </div>
+                
+                <div style="background: white; padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem; box-shadow: var(--shadow);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">❓ How to preserve scented candles?</h3>
+                    <p style="color: var(--text-light);">Store in a dry place, avoid direct sunlight and high temperatures. Cover when not in use to preserve fragrance longer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Maple Friend</h3>
+                    <p>Specializing in premium scented candles, bringing relaxation and cozy atmosphere to your home.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><strong>Email:</strong> info@maplefriend.vn</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Subscribe</h3>
+                    <p>Subscribe to get updates on new products and promotions.</p>
+                    <div style="margin-top: 1rem;">
+                        <div style="display: flex; gap: 0.5rem;">
+                            <input type="email" placeholder="Enter your email" style="flex: 1; padding: 0.8rem; border: 2px solid var(--border-color); border-radius: 5px; font-family: inherit;">
+                            <button type="button" class="btn" onclick="subscribeNewsletter()">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Maple Friend. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
