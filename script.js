@@ -175,7 +175,7 @@ function displayAllProducts() {
                     <span class="original-price">${formatPrice(product.originalPrice)}</span>
                 </div>
                 <p class="product-description">${product.description}</p>
-                <button class="btn" onclick="addToCart(event, ${product.id})">Add to Cart</button>
+                <button class="btn" onclick="viewProduct(event, ${product.id})">Buy Now</button>
             </div>
         </div>
     `).join('');
