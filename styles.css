@@ -629,3 +629,354 @@ footer {
         font-size: 2rem;
     }
 }
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 2% auto;
+    padding: 0;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: var(--accent-color);
+    font-size: 1.8rem;
+}
+
+.close {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close:hover {
+    color: var(--accent-color);
+}
+
+.modal-body {
+    padding: 2rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+.modal-body h3 {
+    color: var(--primary-color);
+    margin: 2rem 0 1rem 0;
+    font-size: 1.3rem;
+}
+
+.modal-body h3:first-child {
+    margin-top: 0;
+}
+
+.modal-body p {
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+.modal-body ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.modal-body li {
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+}
+
+.modal-body strong {
+    color: var(--primary-color);
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+        max-height: 95vh;
+    }
+    
+    .modal-header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .modal-body h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 98%;
+        margin: 2% auto;
+        border-radius: 10px;
+    }
+    
+    .modal-header {
+        padding: 1rem;
+        border-radius: 10px 10px 0 0;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .modal-body {
+        padding: 1rem;
+    }
+    
+    .modal-body h3 {
+        font-size: 1.1rem;
+        margin: 1.5rem 0 0.8rem 0;
+    }
+}
+
+/* Privacy Policy Page Styles */
+.privacy-policy, .shipping-policy, .terms-conditions, .returns-refunds {
+    padding: 4rem 0;
+    background-color: var(--bg-light);
+    min-height: 60vh;
+}
+
+.policy-content {
+    background: white;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.policy-content h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.policy-content h1::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 1rem auto;
+}
+
+.policy-content h2 {
+    color: var(--primary-color);
+    margin: 2.5rem 0 1.5rem 0;
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.policy-content h3 {
+    color: var(--primary-color);
+    margin: 1.5rem 0 0.8rem 0;
+    font-size: 1.3rem;
+}
+
+.policy-content p {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.policy-content .intro-text {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 3rem;
+    font-style: italic;
+}
+
+.policy-content strong {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.policy-content ul {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+}
+
+.policy-content li {
+    margin-bottom: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* FAQ Items Styling */
+.faq-item {
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--secondary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.faq-item h3 {
+    color: var(--primary-color);
+    margin: 0 0 0.8rem 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.faq-item p {
+    margin: 0;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.back-to-home {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+}
+
+/* Responsive Privacy and Shipping Policy */
+@media (max-width: 768px) {
+    .privacy-policy, .shipping-policy, .terms-conditions, .returns-refunds {
+        padding: 2rem 0;
+    }
+    
+    .policy-content {
+        padding: 2rem;
+        margin: 0 1rem;
+    }
+    
+    .policy-content h1 {
+        font-size: 2rem;
+    }
+    
+    .policy-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .policy-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .faq-item {
+        padding: 1rem;
+    }
+    
+    .faq-item h3 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .privacy-policy, .shipping-policy, .terms-conditions, .returns-refunds {
+        padding: 2rem 0;
+    }
+    
+    .policy-content {
+        padding: 1.5rem;
+        margin: 0 0.5rem;
+    }
+    
+    .policy-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .policy-content h2 {
+        font-size: 1.3rem;
+    }
+    
+    .policy-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .policy-content p {
+        font-size: 0.95rem;
+    }
+    
+    .policy-content .intro-text {
+        font-size: 1.1rem;
+    }
+    
+    .faq-item {
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .faq-item h3 {
+        font-size: 1rem;
+    }
+    
+    .faq-item p {
+        font-size: 0.9rem;
+    }
+}
