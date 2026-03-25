@@ -1,4 +1,4 @@
-// Maple Friend - Scented Candles E-commerce JavaScript
+// Heartmarked Studio - Scented Candles E-commerce JavaScript
 
 // Product data
 const products = [
@@ -289,12 +289,12 @@ function updateCartDisplay() {
 
 // Save cart to localStorage
 function saveCart() {
-    localStorage.setItem('maplefriend-cart', JSON.stringify(cart));
+    localStorage.setItem('heartmarkedstudio-cart', JSON.stringify(cart));
 }
 
 // Load cart from localStorage
 function loadCart() {
-    const savedCart = localStorage.getItem('maplefriend-cart');
+    const savedCart = localStorage.getItem('heartmarkedstudio-cart');
     if (savedCart) {
         cart = JSON.parse(savedCart);
     }
@@ -540,7 +540,7 @@ function formatVNDPrice(price) {
 // Clear cart completely
 function clearCart() {
     cart = [];
-    localStorage.removeItem('maplefriend-cart');
+    localStorage.removeItem('heartmarkedstudio-cart');
     updateCartDisplay();
     displayCartItems();
     updateCartSummary();
@@ -549,7 +549,7 @@ function clearCart() {
 
 // Force clear cart (for debugging stuck items)
 function forceClearCart() {
-    localStorage.removeItem('maplefriend-cart');
+    localStorage.removeItem('heartmarkedstudio-cart');
     cart = [];
     updateCartDisplay();
     if (document.getElementById('cart-items-container')) {
